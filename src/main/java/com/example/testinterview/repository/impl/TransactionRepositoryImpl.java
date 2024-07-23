@@ -2,10 +2,12 @@ package com.example.testinterview.repository.impl;
 
 import com.example.testinterview.domain.Transaction;
 import com.example.testinterview.repository.TransactionRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class TransactionRepositoryImpl implements TransactionRepository {
 
 //    private final TransactionRepository transactionRepository;

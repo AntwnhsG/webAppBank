@@ -2,7 +2,9 @@ package com.example.testinterview.service;
 
 import com.example.testinterview.domain.Transaction;
 
+import java.util.List;
+
 public interface TransactionService {
 
-    Transaction findTransactionsByAccountId(Long id);
+    List<Transaction> findTransactionsByBeneficiaryId(Long id);
 }
