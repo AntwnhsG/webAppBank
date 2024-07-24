@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,9 +20,16 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    @GetMapping("/id")
-    public ResponseEntity<ApiResponse<List<Transaction>>> getTransactionsByBeneficiaryId(@PathVariable("id") final Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<List<Transaction>>> getTransactionsByBeneficiaryId(@PathVariable("id") final Long beneficiaryId) {
         return ResponseEntity.ok(
-                ApiResponse.<List<Transaction>>builder().data(transactionService.findTransactionsByBeneficiaryId(id)).build());
+                ApiResponse.<List<Transaction>>builder().data(transactionService.findTransactionsByBeneficiaryId(beneficiaryId)).build());
+    }
+
+    @GetMapping("/balance/{id}")
+    public ResponseEntity<ApiResponse<Map<Long, Double>>> getTransactionsBalanceOfAccountsByBeneficiaryId(@PathVariable("id") final Long beneficiaryId) {
+        return ResponseEntity.ok(
+                ApiResponse.<Map<Long, Double>>builder().data(transactionService.calculateAccountBalances(beneficiaryId)).build()
+        );
     }
 }

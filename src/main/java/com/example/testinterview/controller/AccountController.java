@@ -19,9 +19,9 @@ public class AccountController {
 
     private final AccountsService accountsService;
 
-    @GetMapping("/id")
-    public ResponseEntity<ApiResponse<List<Account>>> findAccountsByBeneficiaryId(@PathVariable("id") Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<List<Account>>> findAccountsByBeneficiaryId(@PathVariable("id") Long beneficiaryId) {
         return ResponseEntity.ok(
-                ApiResponse.<List<Account>>builder().data(accountsService.findAccountsByBeneficiaryId(id)).build());
+                ApiResponse.<List<Account>>builder().data(accountsService.findAccountsByBeneficiaryId(beneficiaryId)).build());
     }
 }

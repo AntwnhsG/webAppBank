@@ -16,8 +16,15 @@ import java.io.InputStreamReader;
 public class BeneficiaryRepositoryImpl implements BeneficiaryRepository {
 
     @Override
-    public Beneficiary readBeneficiaryById(long id) {
+    public Beneficiary readBeneficiaryById(Long id) {
+
+        return findBeneficiary(id);
+    }
+
+    public Beneficiary findBeneficiary(Long id){
+
         InputStream csvFile = getClass().getClassLoader().getResourceAsStream("beneficiaries.csv");
+        Beneficiary beneficiary = new Beneficiary();
         if (csvFile == null) {
             throw new RuntimeException("CSV file not found in resources.");
         }
@@ -26,17 +33,15 @@ public class BeneficiaryRepositoryImpl implements BeneficiaryRepository {
             while ((line = reader.readNext()) != null) {
                 Long beneficiaryId = Long.parseLong(line[0]); // Assuming first column is ID
                 if (beneficiaryId.equals(id)) {
-                    Beneficiary beneficiary = new Beneficiary();
                     beneficiary.setId(beneficiaryId);
                     beneficiary.setFirstName(line[1]);
                     beneficiary.setLastName(line[2]);
-                    return beneficiary;
                 }
             }
         } catch (CsvValidationException | IOException e) {
             e.printStackTrace();
         }
 
-        return null; // or throw an exception if preferred
+        return beneficiary;
     }
 }

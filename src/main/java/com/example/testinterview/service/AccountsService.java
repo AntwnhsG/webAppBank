@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AccountsService {
 
-    List<Account> findAccountsByBeneficiaryId(Long id);
+    List<Account> findAccountsByBeneficiaryId(Long beneficiaryId);
 }

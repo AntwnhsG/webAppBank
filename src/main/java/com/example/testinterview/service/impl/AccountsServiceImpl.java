@@ -1,6 +1,8 @@
 package com.example.testinterview.service.impl;
 
 import com.example.testinterview.domain.Account;
+import com.example.testinterview.domain.Beneficiary;
+import com.example.testinterview.repository.AccountsRepository;
 import com.example.testinterview.service.AccountsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountsServiceImpl implements AccountsService {
 
-    @Override
-    public List<Account> findAccountsByBeneficiaryId(Long id) {
+    private final AccountsRepository accountsRepository;
 
-        return null;
-    }
+    @Override
+    public List<Account> findAccountsByBeneficiaryId(Long beneficiaryId) { return accountsRepository.findAccountsByBeneficiaryId(beneficiaryId); }
 }

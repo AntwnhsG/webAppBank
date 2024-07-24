@@ -20,8 +20,8 @@ public class BeneficiaryController {
     private final BeneficiaryService beneficiaryService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<Beneficiary>> getBeneficiaryInfo(@PathVariable("id") final Long id) {
+    public ResponseEntity<ApiResponse<Beneficiary>> getBeneficiaryInfo(@PathVariable("id") final Long beneficiaryId) {
         return ResponseEntity.ok(
-                ApiResponse.<Beneficiary>builder().data(beneficiaryService.readBeneficiary(id)).build());
+                ApiResponse.<Beneficiary>builder().data(beneficiaryService.readBeneficiary(beneficiaryId)).build());
     }
 }
