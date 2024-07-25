@@ -32,4 +32,11 @@ public class TransactionController {
                 ApiResponse.<Map<Long, Double>>builder().data(transactionService.calculateAccountBalances(beneficiaryId)).build()
         );
     }
+
+    @GetMapping("/max-withdrawal/{id}")
+    public ResponseEntity<ApiResponse<Map<Long, Double>>> getLargestWithdrawalOfBeneficiaryId(@PathVariable("id") final Long beneficiaryId) {
+        return ResponseEntity.ok(
+                ApiResponse.<Map<Long, Double>>builder().data(transactionService.findLargestWithdrawalMadeFromBeneficiary(beneficiaryId)).build()
+        );
+    }
 }
