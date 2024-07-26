@@ -24,7 +24,7 @@ public class AccountsRepositoryImpl extends BaseLogger implements AccountsReposi
         InputStream csvFile = getClass().getClassLoader().getResourceAsStream("accounts.csv");
         List<Account> beneficiaryAccounts = new ArrayList<>();
         if (csvFile == null) {
-            throw new ReadCsvException("CSV file not found in resources.");
+            throw new ReadCsvException("CSV file not found in resources");
         }
         try (CSVReader reader = new CSVReaderBuilder(new InputStreamReader(csvFile)).withSkipLines(1).build()) {
             String[] line;

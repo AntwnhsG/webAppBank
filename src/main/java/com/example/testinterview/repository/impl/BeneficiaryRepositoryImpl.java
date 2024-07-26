@@ -27,7 +27,7 @@ public class BeneficiaryRepositoryImpl extends BaseLogger implements Beneficiary
         InputStream csvFile = getClass().getClassLoader().getResourceAsStream("beneficiaries.csv");
         Beneficiary beneficiary = new Beneficiary();
         if (csvFile == null) {
-            throw new ReadCsvException("CSV file not found in resources.");
+            throw new ReadCsvException("CSV file not found in resources");
         }
         try (CSVReader reader = new CSVReaderBuilder(new InputStreamReader(csvFile)).withSkipLines(1).build()) {
             String[] line;

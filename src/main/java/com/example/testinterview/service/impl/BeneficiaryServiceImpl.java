@@ -16,7 +16,7 @@ public class BeneficiaryServiceImpl extends BaseLogger implements BeneficiarySer
 
     @Override
     public Beneficiary readBeneficiary(Long id) {
-        logger.trace("Searching Beneficiary with Id:{}.", id);
+        logger.trace("Searching Beneficiary with Id:{}", id);
         return beneficiaryRepository.readBeneficiaryById(id);
     }
 }

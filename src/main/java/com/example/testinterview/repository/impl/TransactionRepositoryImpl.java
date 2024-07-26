@@ -27,7 +27,7 @@ public class TransactionRepositoryImpl extends BaseLogger implements Transaction
         accounts.forEach(account -> {
             InputStream csvFile = getClass().getClassLoader().getResourceAsStream("transactions.csv");
             if (csvFile == null) {
-                throw new ReadCsvException("CSV file not found in resources.");
+                throw new ReadCsvException("CSV file not found in resources");
             }
             try (CSVReader reader = new CSVReaderBuilder(new InputStreamReader(csvFile)).withSkipLines(1).build()) {
                 String[] line;

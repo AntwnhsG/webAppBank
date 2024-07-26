@@ -18,7 +18,7 @@ public class AccountsServiceImpl extends BaseLogger implements AccountsService {
 
     @Override
     public List<Account> findAccountsByBeneficiaryId(Long beneficiaryId) {
-        logger.trace("Searching Accounts for Beneficiary Id:{}.", beneficiaryId);
+        logger.trace("Searching Accounts for Beneficiary Id:{}", beneficiaryId);
         return accountsRepository.findAccountsByBeneficiaryId(beneficiaryId);
     }
 }
