@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  webbankapp:
+    build: .
+    image: garant/web_bank_app:0.0.0
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+    volumes:
+      - app-data:/app/data
+
+volumes:
+  app-data:
