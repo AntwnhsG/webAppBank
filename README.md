@@ -16,4 +16,6 @@ The application is using csv files located in resource folder as a database
 Note: This project is build using Lombok. Sometimes there is a warning that does not allow the application to run. So make sure Lombok is installed
 
 
+#Docker Image
 
+https://hub.docker.com/repository/docker/garant/web_bank_app/general
